@@ -1,0 +1,26 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(100),
+    keycloak_id VARCHAR(100),
+    password VARCHAR(40) NOT NULL,
+    first_name VARCHAR(40) NOT NULL,
+    last_name VARCHAR(40) NOT NULL,
+    roles VARCHAR(40) NOT NULL,
+    enabled BOOLEAN,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT unique_email UNIQUE (email)
+);
+
+select * from users;
+
+INSERT INTO users (email, password, first_name, last_name, roles, enabled)
+VALUES
+('phil@gmail.com', 'UPassword', 'Phil', 'Courtois', 'USER_ROLE', true),
+('martine@gmail.com', 'MPassword', 'Martine', 'Courtois', 'ADMIN_ROLE', true);
+
+SELECT setval(pg_get_serial_sequence('users', 'user_id'),
+       (SELECT MAX(user_id) FROM users));
+
+
+     truncate table users;

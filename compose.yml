@@ -1,0 +1,68 @@
+name: fitness-microservice
+
+services:
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: rabbit-server-cnr
+    hostname: rmq
+    restart: always
+    volumes:
+      - ./activityservice/docker/volumes/rabbitmq_data:/var/lib/rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: admin   guest  - 8088:15672
+#      MONGO_INITDB_ROOT_PASSWORD: secret  guest
+#      - ./activityservice/docker/volumes/rabbitmq_data:/var/lib/rabbitmq
+
+  postgres:
+    image: 'postgres:17.2'
+    environment:
+      - 'POSTGRES_DB=fitness_user_db'
+      - 'POSTGRES_PASSWORD=password'
+      - 'POSTGRES_USER=admin'
+    volumes:
+        - ./userservice/docker/volumes/pg_data:/var/lib/postgresql/data
+    container_name: postgres-db-cnr
+    ports:
+      - '5432:5432'
+
+  mongo1:
+    image: mongo:8.0
+    container_name: mongo-db-cnr1
+    restart: always
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    volumes:
+      - ./activityservice/docker/volumes/mongo_data1/:/data/db/
+      - /etc/timezone:/etc/timezone:ro
+
+  mongo2:
+    image: mongo:8.0
+    container_name: mongo-db-ai-cnr2
+    restart: always
+    ports:
+      - '27018:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    volumes:
+      - ./aiservice/docker/volumes/mongo_data2/:/data/db/
+      -  /etc/timezone:/etc/timezone:ro
+
+##############################################################
+#volumes:
+#
+#  - mongo_data2:/data/db/
+#  - postgres_data:/var/lib/postgresql/data
+#
+#  postgres_data:
+#    name: postgres_user_data_volume
+#  mongo_data1:
+#    name: mongo1_activity_data_volume
+#  mongo_data2:
+#    name: mongo2_ai_data_volume

@@ -1,0 +1,25 @@
+spring.application.name=activity-service
+spring.config.import=optional:configserver:http://localhost:8888
+
+### use configserver config folder to define configurations
+#server.port=82
+## connecting to mongo db as docker container database
+#spring.data.mongodb.uri=mongodb://admin:secret@localhost:27017/fitnessactivity?authSource=admin
+
+## eureka client
+#eureka.instance.instance-id=activity-service:192.168.1.22:82
+#eureka.instance.hostname=192.168.1.22
+#eureka.instance.non-secure-port=82
+
+## rabbit mq parameters
+#spring.rabbitmq.host=localhost
+#spring.rabbitmq.port=5672
+#spring.rabbitmq.username=guest
+#spring.rabbitmq.password=guest
+
+## rabbit mq
+#rabbitmq.exchange.queue.name=activity.queue
+#rabbitmq.exchange.name=fitness.exchange
+#rabbitmq.exchange.routing.key=activity.tracking
+
+

@@ -1,0 +1,3 @@
+VHOST: /
+QUEUE: activity.queue
+INDEX: v2

@@ -1,0 +1,60 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: api-gateway
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8181/realms/fitness-oath2-realm/protocol/openid-connect/certs
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: user-service
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/apiv1/users/**
+            - id: activity-service
+              uri: lb://ACTIVITY-SERVICE
+              predicates:
+                - Path=/apiv1/activities/**
+            - id: ai-service
+              uri: lb://AI-SERVICE
+              predicates:
+                - Path=/apiv1/recommendations/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    #fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: api-gateway:192.168.1.22:80
+    hostname: 192.168.1.22
+    non-secure-port: 80
+
+#####################################################################
+#server.port=80
+## this will locate eureka server
+#eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
+#eureka.instance.prefer-ip-address=true
+#eureka.instance.instance-id=api-gateway:192.168.1.22:80
+#eureka.instance.hostname=192.168.1.22
+#eureka.instance.non-secure-port=80
+#eureka.client.register-with-eureka=true
+#eureka.client.fetch-registry=true
+## Spring Cloud Gateway routes
+#pring.cloud.gateway.server.webflux.routes[0].id=user-service
+#spring.cloud.gateway.server.webflux.routes[0].uri=lb://USER-SERVICE
+#spring.cloud.gateway.server.webflux.routes[0].predicates[0]=Path=/apiv1/users/**
+#spring.cloud.gateway.server.webflux.routes[1].id=activity-service
+#spring.cloud.gateway.server.webflux.routes[1].uri=lb://ACTIVITY-SERVICE
+#spring.cloud.gateway.server.webflux.routes[1].predicates[0]=Path=/apiv1/activities/**
+#spring.cloud.gateway.server.webflux.routes[2].id=ai-service
+#spring.cloud.gateway.server.webflux.routes[2].uri=lb://AI-SERVICE
+#spring.cloud.gateway.server.webflux.routes[2].predicates[0]=Path=/apiv1/recommendations/**

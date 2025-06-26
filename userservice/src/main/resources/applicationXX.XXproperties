@@ -1,0 +1,22 @@
+spring.application.name=user-service
+#spring.config.import=optional:configserver:http://localhost:8888
+
+### no longer needed as all confid is done from config-server
+server.port=81
+## connecting to postgres db
+spring.datasource.url=jdbc:postgresql://localhost:5432/fitness_user_db
+spring.datasource.username=admin
+spring.datasource.password=password
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+#jpa.hibernate.ddl-auto=update
+#jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+
+## this will locate eureka server
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
+
+eureka.instance.instance-id=user-service:192.168.1.22:81
+eureka.instance.hostname=192.168.1.22
+eureka.instance.non-secure-port=81
+
+##eureka.instance.prefer-ip-address=true

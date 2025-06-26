@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: user-service
+  config:
+    import: optional:configserver:http://localhost:8888
+
+############################################
+#server:
+#  port: 81
+#spring:
+#  application:
+#    name: user-service
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/fitness_user_db
+#    username: admin
+#    password: password
+#    driver-class-name: org.postgresql.Driver
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    instance-id: user-service:192.168.1.22:81
+#    hostname: 192.168.1.22
+#    non-secure-port: 81

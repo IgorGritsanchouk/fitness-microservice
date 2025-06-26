@@ -1,0 +1,14 @@
+services:
+
+  mongo2:
+    image: mongo:8.0
+    container_name: mongo-db-ai-cnr2
+    restart: always
+    ports:
+      - '27018:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    volumes:
+      - ./docker/volumes/mongo_data/:/data/db/
+      - /etc/timezone:/etc/timezone:ro

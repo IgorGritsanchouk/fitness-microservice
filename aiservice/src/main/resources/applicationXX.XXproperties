@@ -1,0 +1,29 @@
+spring.application.name=ai-service
+spring.config.import=optional:configserver:http://localhost:8888
+
+### use config properties in config server
+#server.port=83
+## connecting to mongo db in a conteyner database
+
+#spring.data.mongodb.uri=mongodb://admin:secret@localhost:27018/fitness-recommendation?authSource=admin
+#eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
+
+## eureka ai-service client
+#eureka.instance.instance-id=ai-service:192.168.1.22:83
+#eureka.instance.hostname=192.168.1.22
+#eureka.instance.non-secure-port=83
+
+## rabbit mq parameters
+#spring.rabbitmq.host=localhost
+#spring.rabbitmq.port=5672
+#spring.rabbitmq.username=guest
+#spring.rabbitmq.password=guest
+
+## rabbit mq
+#rabbitmq.exchange.queue.name=activity.queue
+#rabbitmq.exchange.name=fitness.exchange
+#rabbitmq.exchange.routing.key=activity.tracking
+
+## Gemini API
+#gemini.api.url=${GEMINI_API_URL}
+#gemini.api.key=${GEMINI_API_KEY}
