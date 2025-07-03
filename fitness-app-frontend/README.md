@@ -1,5 +1,17 @@
 # React + Vite
 
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+Corresponds to tutorial version : create-vite@6.3.1
+PS C:\MICROSERVICE\fitness-microservice\fitness-app-frontend> npm run dev
+
+https://react-redux.js.org/
+----- for state management required ----
+PS C:\MICROSERVICE\fitness-microservice\fitness-app-frontend>npm install react-redux
+
+redux toolkit
+https://redux-toolkit.js.org/
+PS C:\MICROSERVICE\fitness-microservice\fitness-app-frontend>npm install @reduxjs/toolkit
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

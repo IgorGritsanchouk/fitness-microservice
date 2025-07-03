@@ -1,9 +1,16 @@
 # File -> New -> Module From Existing Sources -> select pom.xml
+registerRequest.setPassword("default@password");
+
 Exchange: fitness.exchange   is required to be added to the rabbit mq
-
 keycloak ===  create 1) realm first and then  2) oath2-pkce-client
+-----------------------------------------------------------------------
+https://jwt.io      // JSON Web Token (JWT) Debugger
+https://www.keycloak.org/getting-started/getting-started-docker
+https://www.composerize.com/
+https://jsonlint.com/
+http://localhost:8761/     //eurika
 
-
+-----------------------------------------------------------------------
 https://www.youtube.com/watch?v=_FdKTSFnWeg
 Java Full Stack Spring Boot AI Microservice Project: AWS, Spring Boot, Spring Cloud, Keycloak, React
 http://localhost:8888/activity-service/default
@@ -188,9 +195,48 @@ environment:
 - KEYCLOAK_ADMIN=keycloak
 - KEYCLOAK_ADMIN_PASSWORD=keycloak
 volumes:
-- ./gateway/docker/volumes/rabbitmq_data:/var/lib/rabbitmq
+- ./gateway/docker/volumes/keycloak_data:/opt/keycloak/data
 
 
 #- keycloak_data:/opt/keycloak/data
 #volumes:
 #keycloak_data:
+
+=============================================================
+C:\MICROSERVICE\fitness-microservice\fitness-app-frontend>npm run dev
+
+> fitness-app-frontend@0.0.0 dev
+> vite
+>
+VITE v7.0.0  ready in 2485 ms
+
+➜  Local:   http://localhost:5173/
+➜  Network: use --host to expose
+➜  press h + enter to show help
+
+=================================================
+Run this in PowerShell as Administrator:
+
+powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+Option 3: Permanently change execution policy (less safe)
+You can allow all unsigned scripts (not recommended for general use):
+powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
+=======================================
+cd fitness-app-frontend
+npm install
+npm run dev
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Client details  :   oath2-pkce-client
+Valid redirect URIs :   http://localhost:5173
+Web origins :  http://localhost:5173
+Authentication flow       Standard flow       Direct access grants
+
+Advanced :   Use refresh tokens     On
+
+
+
